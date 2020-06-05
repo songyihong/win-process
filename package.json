@@ -1,0 +1,29 @@
+{
+  "name": "win-process",
+  "version": "1.0.0",
+  "description": "window process kill or get process id",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/songyihong/win-process.git"
+  },
+  "keywords": [
+    "window",
+    "process",
+    "pid",
+    "kill"
+  ],
+  "author": "songyh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/songyihong/win-process/issues"
+  },
+  "homepage": "https://github.com/songyihong/win-process#readme",
+  "dependencies": {
+    "nan": "^2.14.1"
+  }
+}
