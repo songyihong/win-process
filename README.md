@@ -18,7 +18,7 @@ const winProcess = require('@songyh/win-process')
 
 ## kill process
 ```
-boolean killProcess(int pid)
+killProcess(pid: number): boolean
 ```
 
 ```js
@@ -30,7 +30,7 @@ const isSuccess = winProcess.killProcess(111)
 ## find process id by process name
 
 ```
-array<int> findProcess(string processName)
+findProcess(processName: string): Array<number>
 ```
 
 ```js
