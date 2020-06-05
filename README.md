@@ -2,12 +2,17 @@
 When the window system is unable to use tasklist/taskkill to get the process list or kill the process under certain permission settings, you can use this library
 
 # Usage
+If you not install window build tools, please install first
 ```sh
-npm i win-process
+npm install --global --production windows-build-tools --vs2015
+```
+
+```sh
+npm i @songyh/win-process
 ```
 
 ```js
-const winProcess = require('win-process')
+const winProcess = require('@songyh/win-process')
 ```
 # Api
 
@@ -17,19 +22,19 @@ boolean killProcess(int pid)
 ```
 
 ```js
-const winProcess = require('win-process')
+const winProcess = require('@songyh/win-process')
 
-const res = winProcess.killProcess(111)
+const isSuccess = winProcess.killProcess(111)
 ```
 
 ## find process id by process name
 
 ```
-array<int> killProcess(string processName)
+array<int> findProcess(string processName)
 ```
 
 ```js
-const winProcess = require('chrome.exe')
+const winProcess = require('@songyh/win-process')
 
-const res = winProcess.killProcess(111)
+const pidArr = winProcess.findProcess('chrome.exe')
 ```
