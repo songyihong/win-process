@@ -16,15 +16,11 @@
       'sources': [
         'src/main.cc',
       ],
+      'libraries': [
+        '-lpsapi.lib',
+      ],
       'include_dirs': [
         '<!(node -e "require(\'nan\')")'
-      ],
-      'conditions': [
-        ['OS=="win"', {
-          'sources': [
-            'src/winProcess.cc',
-          ],
-        }],
       ],
     }
   ]

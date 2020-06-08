@@ -1,5 +1,5 @@
 # win-process
-When the window system is unable to use tasklist/taskkill to get the process list or kill the process under certain permission settings, you can use this library
+Node.js native addon for find or kill win process. When the window system is unable to use tasklist/taskkill to get the process list or kill the process under some UAC settings, you can use this library
 
 # Usage
 If you not install window build tools, please install first
@@ -30,11 +30,23 @@ const isSuccess = winProcess.killProcess(111)
 ## find process id by process name
 
 ```
-findProcess(processName: string): Array<number>
+findProcessId(processName: string): Array<number> | boolean
 ```
 
 ```js
 const winProcess = require('@songyh/win-process')
 
 const pidArr = winProcess.findProcess('chrome.exe')
+```
+
+## find process name by process id
+
+```
+findProcessName(pid: number): string | boolean
+```
+
+```js
+const winProcess = require('@songyh/win-process')
+
+const pname = winProcess.findProcessName(1)
 ```
