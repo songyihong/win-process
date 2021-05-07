@@ -125,12 +125,45 @@ namespace
         }
     }
 
+    void FindProcessPath(const Nan::FunctionCallbackInfo<Value> &info)
+    {
+        if (!info[0]->IsString() && !info[0]->IsNumber())
+        {
+            Nan::ThrowTypeError("Bad argument");
+            return;
+        }
+
+        HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION |
+                                          PROCESS_VM_READ,
+                                      FALSE, info[0]->Uint32Value());
+        if (hProcess == NULL)
+        {
+            info.GetReturnValue().Set(Nan::New<Boolean>(true));
+        }
+        else
+        {
+            TCHAR filename[MAX_PATH];
+
+            if (GetModuleFileNameEx(hProcess, 0, filename, MAX_PATH))
+            {
+                std::basic_string<TCHAR> pathName = filename;
+                CloseHandle(hProcess);
+                info.GetReturnValue().Set(Nan::New<String>(pathName).ToLocalChecked());
+            }
+            else
+            {
+                info.GetReturnValue().Set(Nan::New<Boolean>(false));
+            }
+        }
+    }
+
     void Init(Handle<Object> exports)
     {
         Nan::SetMethod(exports, "killProcess", KillProcess);
         Nan::SetMethod(exports, "findProcess", FindProcessId);
         Nan::SetMethod(exports, "findProcessId", FindProcessId);
         Nan::SetMethod(exports, "findProcessName", FindProcessName);
+        Nan::SetMethod(exports, "findProcessPath", FindProcessPath);
     }
 
 } // namespace

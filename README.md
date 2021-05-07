@@ -50,3 +50,15 @@ const winProcess = require('@songyh/win-process')
 
 const pname = winProcess.findProcessName(1)
 ```
+
+## find process path by process id
+
+```
+findProcessPath(pid: number): string | boolean
+```
+
+```js
+const winProcess = require('@songyh/win-process')
+
+const processPath = winProcess.findProcessPath(1)
+```
